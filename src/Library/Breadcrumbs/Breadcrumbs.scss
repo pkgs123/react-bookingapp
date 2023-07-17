@@ -1,0 +1,18 @@
+@use "../../App.scss" as constant;
+
+#custom-breadcrumb {
+  font-family: inherit;
+  font-size: inherit;
+  padding: 16px 0 !important;
+  .link {
+    display: flex;
+    align-items: center;
+    color: inherit;
+  }
+  .link.active-link {
+    color: constant.$color_blue;
+  }
+  .link.disabled-link {
+    pointer-events: none;
+  }
+}

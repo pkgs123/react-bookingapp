@@ -1,0 +1,38 @@
+@use "../../App.scss" as constant;
+
+$color_border: #cccccc;
+
+#custom-comment-box {
+  .text-area {
+    width: calc(100% - 60px);
+    resize: none;
+    padding: 5px;
+    border-color: $color_border;
+    height: auto;
+    font: inherit;
+    &:focus {
+      border-color: constant.$color_deep_blue;
+      outline: none;
+    }
+  }
+  .button-wrapper {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid $color_border;
+    &:first-child {
+      border-top: none;
+    }
+  }
+
+  .button-container {
+    width: 60px;
+    display: grid;
+    border: 1px solid $color_border;
+    border-left: 0;
+  }
+  .limit {
+    direction: rtl;
+    color: $color_border;
+  }
+}

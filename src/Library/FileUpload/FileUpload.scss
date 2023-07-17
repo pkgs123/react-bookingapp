@@ -1,0 +1,47 @@
+@use "../../App.scss" as constant;
+
+#form-file-upload {
+  max-width: 100%;
+  cursor: pointer;
+
+  #input-file-upload {
+    display: none;
+  }
+
+  #label-file-upload {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed constant.$color_text_field_border;
+    border-radius: 1rem;
+    background-color: transparent;
+    padding: 30px 10px;
+    text-align: center;
+  }
+
+  &.simple-file-upload {
+    border: 0;
+    padding: 0;
+  }
+  .drag-file-element {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+  }
+  p {
+    margin: 0 0 8px;
+  }
+  .subtext {
+    color: constant.$lightGreycolor;
+    font-size: 0.85rem;
+  }
+}
+.upload-errors {
+  color: constant.$color_error_main;
+}

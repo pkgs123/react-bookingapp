@@ -1,0 +1,39 @@
+@use "../../App.scss" as constant;
+
+#notifications {
+  position: relative;
+
+  .containerHeight {
+    max-height: 50vh;
+    overflow: auto;
+  }
+
+  .paddingDiv {
+    padding: 5px;
+    border-bottom: 1px solid constant.$color_header_bg;
+  }
+  
+  .bold {
+    span, div{
+      font-weight: 600;
+    }
+  }
+
+  .notifications-wrapper {
+    position: absolute;
+    right: 0;
+    .arrow {
+      color: constant.$color_white;
+      position: absolute;
+      right: 6px;
+      font-size: 36px;
+      top: -21px;
+    }
+    ul {
+      padding: 0;
+      li {
+        border-bottom: 1px solid constant.$color_header_bg;
+      }
+    }
+  }
+}

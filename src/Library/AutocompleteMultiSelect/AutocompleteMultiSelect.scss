@@ -1,0 +1,10 @@
+@import "../../App.scss";
+
+#multiSelectAutocomplete {
+  .MuiAutocomplete-root .MuiOutlinedInput-root {
+    background: $color_white;
+    box-shadow: 0px 0px 20px 0px
+      $color_text_field_box_shadow;
+    border-radius: 4px;
+  }
+}

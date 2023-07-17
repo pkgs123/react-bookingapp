@@ -1,0 +1,17 @@
+@import "../../App.scss";
+
+#collapsible {
+  box-shadow: none;
+  & .MuiTypography-root {
+    font-family: inherit;
+  }
+
+  & .MuiAccordionSummary-root {
+    background-color: $color_header_text;
+    color: $color_white;
+  }
+
+  & #collapsible-icon {
+    color: $color_white;
+  }
+}

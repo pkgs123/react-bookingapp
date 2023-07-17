@@ -1,0 +1,10 @@
+@use "../../App.scss" as constant;
+
+#tag-ui {
+  background-color: constant.$color_header_text;
+  color: constant.$color_white;
+  .tag-cancel-btn {
+    color: constant.$color_white;
+    font-size: 18px;
+  }
+}

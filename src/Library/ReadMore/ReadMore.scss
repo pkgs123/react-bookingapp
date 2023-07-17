@@ -1,0 +1,11 @@
+@use "../../App.scss" as constant;
+
+.read-more-text {
+  display: inline;
+  width: 100%;
+}
+
+.read-or-hide {
+  color: constant.$color_blue;
+  cursor: pointer;
+}

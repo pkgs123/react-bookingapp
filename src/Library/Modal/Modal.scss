@@ -1,0 +1,35 @@
+@import "../../App.scss";
+
+#Dialog {
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25);
+
+  .Modal-Header-Container {
+    background-color: $color_header_text;
+  }
+
+  .Modal-Header {
+    height: auto;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    color:$color_white;
+    align-items: center;
+    margin: 0 20px 0 12px;
+    font-weight: Medium;
+    font-size: 20px;
+    text-align: left;
+  }
+
+  .modalCloseIcon {
+    cursor: pointer;
+  }
+
+  .MuiDialogContentText-root {
+    font-weight: 400;
+    font-size: 20px;
+    color: $color_black;
+  }
+  
+}
+
+ 

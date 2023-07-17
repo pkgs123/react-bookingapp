@@ -1,0 +1,6 @@
+@import "../../App.scss";
+
+label.required::after {
+  content: "*";
+  color: $color_high_severity;
+}

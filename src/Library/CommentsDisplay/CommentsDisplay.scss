@@ -1,0 +1,35 @@
+@use "../../App.scss" as constant;
+
+#custom-comment-list {
+  font-family: inherit;
+  padding: 0;
+  overflow-y: scroll;
+  .custom-comment-list-item {
+    padding-top: 0;
+    padding-bottom: 4px;
+  }
+  .comment-list {
+    align-items: center;
+    & > div {
+      padding-right: 10px;
+      display: inline-flex;
+    }
+    .name {
+      font-weight: 600;
+    }
+
+    .tags {
+      direction: rtl;
+      padding-bottom: 2px;
+      .tag {
+        padding: 0 4px;
+      }
+    }
+    .time {
+      direction: rtl;
+    }
+  }
+  .placeholderText {
+    color: #888383;
+  }
+}

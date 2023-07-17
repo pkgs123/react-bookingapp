@@ -1,0 +1,42 @@
+@import "../../App.scss";
+
+#CustomButton.custom-button {
+  font-family: inherit;
+  text-transform: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  line-height: 20px;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.1px;
+  font-weight: 500;
+  font-size: 20px;
+  color: $color_white;
+  padding: 6px 38px;
+
+  &--primary {
+    background-color: $color_deep_blue;
+  }
+
+  &--secondary {
+    background-color: $color_header_text;
+  }
+
+  &--small {
+    font-size: 16px;
+    padding: 10px 16px;
+  }
+
+  &--medium {
+    font-size: 18px;
+    padding: 11px 20px;
+  }
+
+  &-large {
+    font-size: 20px;
+    padding: 12px 24px;
+  }
+  &.disabled {
+    color: rgba(0, 0, 0, 0.26);
+  }
+}

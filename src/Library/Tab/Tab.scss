@@ -1,0 +1,18 @@
+@import "../../App.scss";
+
+#customTabs {
+  background-color: $color_anti_flash_white;
+
+  & .MuiTab-root {
+    font-family: inherit;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+  }
+  & .Mui-selected {
+    font-weight: 600;
+    color: $color_header_text;
+  }
+
+  & .MuiTabs-indicator {
+    background-color: $color_deep_blue;
+  }
+}

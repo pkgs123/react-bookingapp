@@ -1,0 +1,99 @@
+@import "../../App.scss";
+
+#timeline {
+  position: relative;
+  font-family: inherit;
+  font-size: 18px;
+  line-height: 26px;
+  color: $color_black;
+  &::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    bottom: 0;
+    left: 36px;
+    width: 1px;
+    background-color: $color_header_bg;
+    height: calc(100% - 58px);
+    z-index: -1;
+  }
+  .year {
+    border-radius: 35px;
+    height: 60px;
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    background-color: $color_blue;
+    color: $color_white;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 27px;
+
+    &.active {
+      background-color: $color_white;
+      color: inherit;
+      border: 1px solid $color_blue;
+    }
+  }
+  .month {
+    margin: 0px 18px;
+    border-radius: 20px;
+    height: 35px;
+    width: 35px;
+    font-size: 12px;
+    color: $color_white;
+    background-color: $color_black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 10px;
+    text-transform: uppercase;
+  }
+  .mothn-data-container {
+    margin-top:20px;
+   
+  }
+  .caseId-container {
+    width: 650px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 5px;
+
+  }
+
+  .case-id {
+    color:$color_deep_blue;
+
+  }
+  .proposed {
+    font-weight: 500;
+    margin-top: 5px;
+  }
+  .date-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 303px;
+    margin-top: 5px;
+  }
+  .data {
+    margin: 8px 36px;
+    padding-left: 36px;
+    position: relative;
+    &::before {
+      position: absolute;
+      content: "";
+      width: 1px;
+      background-color: $color_header_bg;
+      z-index: -1;
+      transform: rotate(90deg);
+      height: 32px;
+      left: 16px;
+      top: -5px;
+    }
+  }
+}

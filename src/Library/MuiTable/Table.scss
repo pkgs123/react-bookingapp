@@ -1,0 +1,33 @@
+@use "../../App.scss" as constant;
+
+.mui-data-table {
+  tr {
+    th {
+      background-color: constant.$color_header_bg;
+      color: constant.$color_header_text;
+      padding: 0 !important;
+    }
+    td {
+      padding: 12px 16px;
+      .quick-menu {
+        position: absolute;
+        top: 30px;
+        right: 50%;
+        z-index: 100;
+      }
+      .disabledMenu {
+        color: constant.$color_header_bg;
+      }
+    }
+    &:nth-last-child(1),
+    &:nth-last-child(2) {
+      .menu-items {
+        top: -50%;
+      }
+    }
+  }
+}
+
+.maxWidth {
+  min-width: max-content;
+}

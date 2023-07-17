@@ -1,0 +1,15 @@
+@use "../../App.scss" as constant;
+
+#custom-snackbar {
+  .warning {
+    background: constant.$color_medium_severity;
+  }
+
+  .error {
+    background: constant.$color_high_severity;
+  }
+
+  .success {
+    background: constant.$color_low_severity;
+  }
+}

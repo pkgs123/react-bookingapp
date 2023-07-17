@@ -1,0 +1,154 @@
+$color_white: #ffffff;
+$color_black: #000000;
+$color_blue: #1976d2;
+$color_header_bg: #dddddd;
+$color_header_text: #666666;
+$color_info_main: #0288d1;
+$color_error_main: #d32f2f;
+$color_warning_main: #ed6c02;
+$color_high_severity: #de2f1b;
+$color_medium_severity: #eea20e;
+$color_low_severity: #008550;
+$whiteColor: white;
+$lightGreycolor: lightslategrey;
+$color_eclipse: #3a3a3a;
+$color_deep_blue: #135ef2;
+$color_nero: #2a2a2a;
+$color_grey: #808080;
+$color_form_font: #525252;
+$color_text_field_bg: #fafafa;
+$color_text_field_border: #aaaaaa;
+$color_text_field_box_shadow: #0000000d;
+$color_highlight_grey: #f0f0f0;
+$color_default_text: #3a3a3a;
+$color_default_icon: #d9d9d9;
+$color_anti_flash_white: #f3f3f3;
+$proposed_font_weight: 350;
+$ipad: 768px;
+
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: $color_anti_flash_white;
+}
+
+/* below filedset used to display the show columns list properly in mui datatable */
+fieldset {
+  padding-left: 10px !important;
+}
+
+.textMuted {
+  font-size: 8px;
+  color: #808080;
+}
+
+.landingButton {
+  display: grid !important;
+  place-items: center !important;
+  margin: 0 !important;
+  border-radius: 0px 10px 10px 0px !important;
+  font-size: 1em !important;
+  overflow-wrap: anywhere;
+  width: 10px;
+}
+
+/* bootstrap container styles */
+.container {
+  margin: 0 auto;
+}
+
+// iPad-only CSS mixin
+@mixin ipad-only {
+  @media only screen and (min-width: #{$ipad}) {
+    @content;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1170px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .container {
+    max-width: 1390px;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .container {
+    max-width: 1590px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1910px;
+  }
+}
+
+.centerDiv {
+  display: grid;
+  place-items: center;
+}
+
+.Mui-disabled {
+  input {
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+  }
+
+  .MuiOutlinedInput-notchedOutline {
+    background-color: #f0f0f0;
+    opacity: 0.4;
+  }
+}
+
+:root {
+  @include ipad-only {
+    // iPad-only styles for all components go here
+  }
+}
+
+.component-div-full-map-view {
+  overflow: hidden;
+  visibility: hidden;
+}
+
+/* style variables will be used inside our component */
+:export {
+  color_white: $color_white;
+  color_high_severity: $color_high_severity;
+  color_info_main: $color_info_main;
+  color_medium_severity: $color_medium_severity;
+  color_header_text: $color_header_text;
+  color_header_bg: $color_header_bg;
+  color_blue: $color_blue;
+  color_grey: $color_grey;
+  color_eclipse: $color_eclipse;
+  color_black: $color_black;
+  color_text_field_bg: $color_text_field_bg;
+  color_text_field_border: $color_text_field_border;
+  color_text_field_box_shadow: $color_text_field_box_shadow;
+  color_deep_blue: $color_deep_blue;
+  color_error_main: $color_error_main;
+  color_low_severity: $color_low_severity;
+  color_default_icon: $color_default_icon;
+  font_weight: $proposed_font_weight;
+}

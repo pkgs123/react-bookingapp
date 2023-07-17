@@ -1,0 +1,27 @@
+@import "../../App.scss";
+.custom-label {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 600;
+  width: 100%;
+  padding-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end; 
+
+  .tooltipIcon {
+    float: right;
+    display: flex;
+    cursor: pointer;
+  }
+   .asterisk { 
+    color: $color_high_severity; 
+    display: contents;
+    }
+
+}
+
+.label-tooltip {
+  margin-bottom: 0 !important;
+}
+ 

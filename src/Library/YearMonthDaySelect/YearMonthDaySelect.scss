@@ -1,0 +1,11 @@
+@use "../../App.scss" as constant;
+
+#custom-years-months-days {
+  .custom-label {
+    padding-bottom: 1px;
+  }
+
+  .normalText {
+    font-weight: constant.$proposed_font_weight;
+  }
+}

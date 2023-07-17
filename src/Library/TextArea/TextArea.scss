@@ -1,0 +1,28 @@
+@import "../../App.scss";
+
+#custom-textarea {
+  .MuiTextField-root {
+    width: inherit;
+    font-family: inherit;
+    font-size: inherit;
+  }
+  .MuiOutlinedInput-root {
+    width: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 6px 12px;
+  }
+  .charLimitFont {
+    font-size: 16px;
+    float: right;
+    display: flex;
+    color: #525252;
+    margin-top: 8px;
+  }
+  .field {
+    background: $color_white;
+    box-shadow: 0px 0px 20px 0px
+      $color_text_field_box_shadow;
+    border-radius: 4px;
+  }
+}

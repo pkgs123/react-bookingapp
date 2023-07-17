@@ -1,0 +1,31 @@
+@use "../../App.scss" as constant;
+#customRTE {
+  font-family: inherit;
+
+  .RichTextEditor__root___2QXK- {
+    border: none;
+  }
+
+  .ql-picker-options {
+    width: max-content;
+  }
+  .ql-color-red {
+    color: constant.$color_high_severity;
+  }
+  .ql-color-green {
+    color: constant.$color_low_severity;
+  }
+  .ql-color-blue {
+    color: constant.$color_blue;
+  }
+  .charLimitFont {
+    font-size: 16px;
+    float: right;
+    display: flex;
+    color: #525252;
+    margin-top: 8px;
+  }
+  .editor {
+    height: calc(100% - 40px);
+  }
+}

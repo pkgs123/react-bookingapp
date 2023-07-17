@@ -1,0 +1,14 @@
+@use "../App.scss" as constant;
+#searchdoctorId {
+  .table-cell-body-padding {
+    padding: 0px;
+  }
+  table th {
+    color: constant.$color_black;
+  }
+  .delete-btn {
+    color: constant.$color_high_severity;
+    border: 1px solid;
+    border-radius: 20px;
+  }
+}

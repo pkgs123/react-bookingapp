@@ -1,0 +1,11 @@
+@import "../../App.scss";
+
+#Navbar.navbar {
+  &--primary {
+    background-color: $color_deep_blue;
+  }
+  &--header {
+    font-size: large;
+    font-weight: bold;
+  }
+}
