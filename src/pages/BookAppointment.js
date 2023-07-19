@@ -14,6 +14,7 @@ import CustomDatepicker from "../Library/Datepicker/Datepicker";
 import BookAppointmentPage from "./BookAppointmentPage";
 import { Grid } from "@mui/material";
 import { convertDecimalToInteger } from "../CommonLogic";
+import { END_POINTS } from "../Services/ServiceConfig";
 
 function BookAppointment() {
   const [isAvailable, setIsAvailable] = useState(false);
@@ -79,7 +80,7 @@ function BookAppointment() {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "/api/doctor/get-doctor-info-by-id",
+        END_POINTS.GET_DOCTORS_INFO,
         {
           doctorId: params.doctorId,
         },
@@ -109,7 +110,7 @@ function BookAppointment() {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "/api/user/check-booking-avilability",
+        END_POINTS.CHECK_BOOKING_AVAILABILITY,
         {
           doctorId: params.doctorId,
           date: moment(date).format('DD-MM-YYYY'),
@@ -138,7 +139,7 @@ function BookAppointment() {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "/api/user/book-appointment",
+        END_POINTS.BOOK_APPOINTMENT,
         {
           doctorId: params.doctorId,
           userId: user._id,
