@@ -6,7 +6,7 @@ const runLocally = () =>
   /^localhost$/.test(window.location.hostname);
 const HOST_URL = runLocally()
   ? ""
-  : ``;
+  : `//atulvm.eastus.cloudapp.azure.com:8000/`;
 const USER_URL = HOST_URL + "api/user/";
 const DOCTOR_URL = HOST_URL + "api/doctor/";
 
