@@ -142,8 +142,8 @@ function BookAppointment() {
         {
           doctorId: params.doctorId,
           userId: user._id,
-          // doctorInfo: doctor,
-          // userInfo: user,
+          doctorInfo: doctor,
+          userInfo: user,
           date: moment(date).format('DD-MM-YYYY'),
           time: time ? convertDecimalToInteger(time.replace(":", ".") * 2) :""
         },
@@ -182,7 +182,7 @@ function BookAppointment() {
           <h1 className="page-title">
             {doctor.firstName} {doctor.lastName} - {doctor.specialization}
             <Link to="/searchdoctor">
-              <CustomButton primary={true} sx={{ ml: "49rem" }}>
+              <CustomButton primary={false} sx={{ ml: "62rem" }}>
                 Back
               </CustomButton>
             </Link>

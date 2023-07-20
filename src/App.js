@@ -10,10 +10,10 @@ import { useSelector } from "react-redux";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
 
-import Profile from "./pages/Doctor/Profile";
+// import Profile from "./pages/Doctor/Profile";
 import BookAppointment from "./pages/BookAppointment";
 import Appointments from "./pages/Appointments";
-import DoctorAppointments from "./pages/Doctor/DoctorAppointments";
+// import DoctorAppointments from "./pages/Doctor/DoctorAppointments";
 import NavBar from "./components/NavBar/NavBar";
 import SearchDoctor from "./pages/SearchDoctor";
 
@@ -63,14 +63,14 @@ function App() {
             </ProtectedRoute>
           }/>
 
-        <Route
+        {/* <Route
           path="/doctor/profile/:userId"
           element={
             <ProtectedRoute>
               <Profile />
             </ProtectedRoute>
           }
-        />
+        /> */}
 
         <Route
           path="/book-appointment/:doctorId"
@@ -89,14 +89,14 @@ function App() {
           }
         />
 
-        <Route
+        {/* <Route
           path="/doctor/appointments"
           element={
             <ProtectedRoute>
               <DoctorAppointments />
             </ProtectedRoute>
           }
-        />
+        /> */}
       </Routes>
     </HashRouter>
   );

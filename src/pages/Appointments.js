@@ -1,11 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-
+import {
+  CustomTableContainer,
+  CustomTable,
+  CustomTableHead,
+  CustomTableRow,
+  CustomTableCell,
+  CustomTableBody,
+  ColorButton,
+} from "../Library/Table/Table";
 import { showLoading, hideLoading } from "../redux/slices/alertsSlice";
 import { toast } from "react-hot-toast";
 import axios from "axios";
-import { Table } from "antd";
+
 import moment from "moment";
+import { Grid, Avatar } from "@mui/material";
+import variables from "../App.scss";
+import { CustomLabel } from "../Library/Label/Label";
+import { CustomButton } from "../Library/Button/Button";
+import "../components/DoctorsTable.scss";
 
 function Appointments() {
   const [appointments, setAppointments] = useState([]);
@@ -13,11 +26,14 @@ function Appointments() {
   const getAppointmentsData = async () => {
     try {
       dispatch(showLoading());
-      const resposne = await axios.get("/api/user/get-appointments-by-user-id", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const resposne = await axios.get(
+        "/api/user/get-appointments-by-user-id",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       dispatch(hideLoading());
       if (resposne.data.success) {
         setAppointments(resposne.data.data);
@@ -26,51 +42,144 @@ function Appointments() {
       dispatch(hideLoading());
     }
   };
-  const columns = [
+ 
+  const appointmentColumns = [
     {
-        title: "Id",
-        dataIndex: "_id",
+      id: 1,
+      colName: "Doctor",
     },
-    {
-      title: "Doctor",
-      dataIndex: "name",
-      render: (text, record) => (
-        <span>
-          {record.doctorInfo.firstName} {record.doctorInfo.lastName}
-        </span>
-      ),
-    },
-    {
-      title: "Phone",
-      dataIndex: "phoneNumber",
-      render: (text, record) => (
-        <span>
-          {record.doctorInfo.phoneNumber} 
-        </span>
-      ),
-    },
-    {
-      title: "Date & Time",
-      dataIndex: "createdAt",
-      render: (text, record) => (
-        <span>
-          {moment(record.date).format("DD-MM-YYYY")} {moment(record.time).format("HH:mm")}
-        </span>
-      ),
-    },
-    {
-        title: "Status",
-        dataIndex: "status",
-    }
+    { id: 2, colName: "Phone" },
+    { id: 3, colName: "Date" },
+    { id: 4, colName: "Time" },
+    { id: 5, colName: "Status/Action" },
   ];
+
   useEffect(() => {
     getAppointmentsData();
   }, []);
-  return  <>
-  <h1 className="page-title">Appointments</h1>
-  <hr />
-  <Table columns={columns} dataSource={appointments} />
-</>
+ 
+  const cancelAppointment = (item, ind) => {
+    console.log("Booking Appointment...", item, ind);
+  };
+
+  function checkPastDate(appointmentDate) {
+    let dateToBeCompared = moment(appointmentDate).format("DD-MMM-YYYY");
+    // For past dates
+    const isPastDate = moment(dateToBeCompared, "DD-MMM-YYYY").isBefore(
+      moment(new Date(), "DD-MMM-YYYY"),
+      "day"
+    );
+    // For same dates
+    const isSameDate = moment(dateToBeCompared, "DD-MMM-YYYY").isSame(
+      moment(new Date(), "DD-MMM-YYYY"),
+      "day"
+    );
+    // For future dates
+    const isFutureDate = moment(dateToBeCompared, "DD-MMM-YYYY").isAfter(
+      moment(new Date(), "DD-MMM-YYYY"),
+      "day"
+    );
+    console.log(
+      "isPastDate",
+      isPastDate,
+      "isSameDate",
+      isSameDate,
+      "isFutureDate",
+      isFutureDate
+    );
+
+    if (isSameDate || isFutureDate) {
+      return true;
+    }
+  }
+
+  return (
+    <div id="searchdoctorId">
+      {/* <Loader isOpen={isLoading} /> */}
+      <h1 className="page-title">Appointments</h1>
+      <Grid container spacing={4} sx={{ padding: "7px" }}>
+        <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+          <CustomTableContainer $mxheight={400}>
+            <CustomTable stickyHeader>
+              <CustomTableHead $bgcolor={variables.color_header_bg}>
+                <CustomTableRow>
+                  {appointmentColumns.map((item) => (
+                    <CustomTableCell
+                      key={item.id}
+                      $color={variables.color_header_bg}
+                      className={`${
+                        item.colName === "Doctor" ? "txt-left" : "txt-centre"
+                      }`}
+                    >
+                      {item?.colName}
+                    </CustomTableCell>
+                  ))}
+                </CustomTableRow>
+              </CustomTableHead>
+              {Object.keys(appointments).length > 0 &&
+              appointments[0] !== null ? (
+                <CustomTableBody>
+                  {appointments?.map((item, ind) => (
+                    <CustomTableRow key={item?._id}>
+                      <CustomTableCell>
+                        <Avatar
+                          alt="profile-Image"
+                          src={item?.doctorInfo?.imgUrl}
+                          sx={{ float: "left" }}
+                        />
+                        Dr. {item?.doctorInfo?.firstName}{" "}
+                        {item?.doctorInfo?.lastName}
+                      </CustomTableCell>
+                      <CustomTableCell
+                        colSpan={1}
+                        style={{ textAlign: "center" }}
+                      >
+                        {item?.doctorInfo?.phoneNumber}
+                      </CustomTableCell>
+                      <CustomTableCell style={{ textAlign: "center" }}>
+                        {moment(item?.date).format("DD-MMM-YYYY")}
+                      </CustomTableCell>
+                      <CustomTableCell style={{ textAlign: "center" }}>
+                        {(item?.time / 2).toString().includes(".5")
+                          ? moment(
+                              (item?.time / 2).toString().replace(".5", ":30"),
+                              ["HH:mm"]
+                            ).format("LT")
+                          : moment((item?.time / 2).toString(), "hh").format(
+                              "LT"
+                            )}
+                      </CustomTableCell>
+
+                      <CustomTableCell style={{ textAlign: "center" }}>
+                        {checkPastDate(item?.date) && (
+                          <CustomButton onClick={cancelAppointment(item, ind)}>
+                            Cancel Appointment
+                          </CustomButton>
+                        )}
+                      </CustomTableCell>
+                    </CustomTableRow>
+                  ))}
+                </CustomTableBody>
+              ) : (
+                <CustomTableBody>
+                  <CustomTableRow>
+                    <CustomTableCell></CustomTableCell>
+                    <CustomTableCell></CustomTableCell>
+                    <CustomTableCell></CustomTableCell>
+                    <CustomTableCell>
+                      <CustomLabel label="No Data Found" />
+                    </CustomTableCell>
+                    <CustomTableCell></CustomTableCell>
+                    <CustomTableCell></CustomTableCell>
+                  </CustomTableRow>
+                </CustomTableBody>
+              )}
+            </CustomTable>
+          </CustomTableContainer>
+        </Grid>
+      </Grid>
+    </div>
+  );
 }
 
 export default Appointments;

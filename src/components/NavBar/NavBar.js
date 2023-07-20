@@ -27,6 +27,9 @@ function NavBar() {
     case "Search Doctor(s)":
       navigate("/searchdoctor");
       break;
+    case "Appointments":
+      navigate("/appointments");
+       break;
     case "Logout":
       localStorage.clear();
       navigate("/login");

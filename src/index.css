@@ -124,3 +124,21 @@ p{
   margin-left: -40px;
   border-bottom-left-radius: 10px;
 }
+::-webkit-scrollbar {
+  width: 17px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #bdbdbd;
+  border-radius: 30px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #607d8b;
+}
