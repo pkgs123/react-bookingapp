@@ -5,10 +5,10 @@ const runLocally = () =>
   window.location.hostname &&
   /^localhost$/.test(window.location.hostname);
 const HOST_URL = runLocally()
-  ? ""
-  : `//atulvm.eastus.cloudapp.azure.com:8000/`;
-const USER_URL = HOST_URL + "api/user/";
-const DOCTOR_URL = HOST_URL + "api/doctor/";
+  ? `${process.env.REACT_APP_API_BASEURL}`
+  : `${process.env.REACT_APP_API_BASEURL}`;
+const USER_URL = HOST_URL + "/api/user/";
+const DOCTOR_URL = HOST_URL + "/api/doctor/";
 
 export const REST_METHODS = {
   GET: "GET",

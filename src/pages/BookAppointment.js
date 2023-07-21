@@ -89,7 +89,7 @@ function BookAppointment() {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "/api/doctor/get-doctor-info-by-id",
+        `${process.env.REACT_APP_API_BASEURL}/api/doctor/get-doctor-info-by-id`,
         {
           doctorId: params.doctorId,
         },
@@ -119,7 +119,7 @@ function BookAppointment() {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "/api/user/check-booking-avilability",
+        `${process.env.REACT_APP_API_BASEURL}/api/user/check-booking-avilability`,
         {
           doctorId: params.doctorId,
           date: moment(date).format('DD-MM-YYYY'),
@@ -148,7 +148,7 @@ function BookAppointment() {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "/api/user/book-appointment",
+        `${process.env.REACT_APP_API_BASEURL}/api/user/book-appointment`,
         {
           doctorId: params.doctorId,
           userId: user._id,
