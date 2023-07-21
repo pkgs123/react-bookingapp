@@ -204,7 +204,7 @@ function BookAppointment() {
             {doctor.firstName} {doctor.lastName} - {doctor.specialization}
             </h1>
             <Link to="/searchdoctor">
-              <CustomButton primary={false} sx={{ ml: "75rem" }}>
+              <CustomButton primary={false} sx={{ ml: "89%" }}>
                 Back
               </CustomButton>
             </Link>
