@@ -56,7 +56,6 @@ function BookAppointment() {
         }),
       };
     });
-    console.log("array", dataArray);
     let todaysAppointmentDetails;
     let tomorrowsAppointmentDetails;
     let dayAfterTomorrowsDetails;
@@ -75,15 +74,6 @@ function BookAppointment() {
     setTodaysSlotInfo(todaysAppointmentDetails);
     setTomorrowsSlotInfo(tomorrowsAppointmentDetails);
     setDayAfterTomorrowsSlotInfo(dayAfterTomorrowsDetails);
-
-    console.log(
-      "todays--resp",
-      todaysAppointmentDetails,
-      "tomorrows--resp",
-      tomorrowsAppointmentDetails,
-      "day-afer-tomor",
-      dayAfterTomorrowsDetails
-    );
   };
   const getDoctorData = async () => {
     try {
@@ -111,7 +101,6 @@ function BookAppointment() {
         );
       }
     } catch (error) {
-      console.log(error);
       dispatch(hideLoading());
     }
   };
@@ -190,7 +179,6 @@ function BookAppointment() {
         isOpen={open}
         title={displayMsg?.success ? displayMsg?.message : "Appointment Confirmation"}
         handleConfirmation={() => {
-          console.log("ok...");
         }}
         handleClose={handleCloseDialog}
         subtitle={displayMsg?.success? displayMsg?.emailMsg : ""}

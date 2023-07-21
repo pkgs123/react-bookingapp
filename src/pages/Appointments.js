@@ -61,7 +61,6 @@ function Appointments() {
   }, []);
 
   const cancelAppointment = (item, ind) => {
-    console.log("Booking Appointment...", item, ind);
   };
 
   function checkPastDate(appointmentDate) {
@@ -81,15 +80,6 @@ function Appointments() {
       moment(new Date(), "DD-MMM-YYYY"),
       "day"
     );
-    console.log(
-      "isPastDate",
-      isPastDate,
-      "isSameDate",
-      isSameDate,
-      "isFutureDate",
-      isFutureDate
-    );
-
     if (isSameDate || isFutureDate) {
       return true;
     }
