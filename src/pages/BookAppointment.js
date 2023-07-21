@@ -89,7 +89,7 @@ function BookAppointment() {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        `${process.env.REACT_APP_API_BASEURL}/api/doctor/get-doctor-info-by-id`,
+        `//atulvm.eastus.cloudapp.azure.com:8000/api/doctor/get-doctor-info-by-id`,
         {
           doctorId: params.doctorId,
         },
@@ -119,7 +119,7 @@ function BookAppointment() {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        `${process.env.REACT_APP_API_BASEURL}/api/user/check-booking-avilability`,
+        `//atulvm.eastus.cloudapp.azure.com:8000/api/user/check-booking-avilability`,
         {
           doctorId: params.doctorId,
           date: moment(date).format('DD-MM-YYYY'),
@@ -148,7 +148,7 @@ function BookAppointment() {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        `${process.env.REACT_APP_API_BASEURL}/api/user/book-appointment`,
+        `//atulvm.eastus.cloudapp.azure.com:8000/api/user/book-appointment`,
         {
           doctorId: params.doctorId,
           userId: user._id,

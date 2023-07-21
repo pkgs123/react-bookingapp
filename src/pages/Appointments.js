@@ -28,7 +28,7 @@ function Appointments() {
     try {
       dispatch(showLoading());
       const resposne = await axios.get(
-        `${process.env.REACT_APP_API_BASEURL}/api/user/get-appointments-by-user-id`,
+        `//atulvm.eastus.cloudapp.azure.com:8000/api/user/get-appointments-by-user-id`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
