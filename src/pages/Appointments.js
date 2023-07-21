@@ -50,9 +50,10 @@ function Appointments() {
       colName: "Doctor",
     },
     { id: 2, colName: "Phone" },
-    { id: 3, colName: "Date" },
-    { id: 4, colName: "Time" },
-    { id: 5, colName: "Status/Action" },
+    { id: 3, colName: "Address" },
+    { id: 4, colName: "Date" },
+    { id: 5, colName: "Time" },
+    { id: 6, colName: "Status/Action" },
   ];
 
   useEffect(() => {
@@ -146,6 +147,11 @@ function Appointments() {
                         style={{ textAlign: "center" }}
                       >
                         {item?.doctorInfo?.phoneNumber}
+                      </CustomTableCell>
+                      <CustomTableCell
+                        style={{ textAlign: "center" }}
+                      >
+                        {item?.doctorInfo?.address}
                       </CustomTableCell>
                       <CustomTableCell style={{ textAlign: "center" }}>
                         {moment(item?.date).format("DD-MMM-YYYY")}
