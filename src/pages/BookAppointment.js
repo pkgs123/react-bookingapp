@@ -14,8 +14,11 @@ import CustomDatepicker from "../Library/Datepicker/Datepicker";
 import BookAppointmentPage from "./BookAppointmentPage";
 import { Grid } from "@mui/material";
 import { convertDecimalToInteger } from "../CommonLogic";
+import { CustomDialog } from "../Library/Modal/Modal";
 
 function BookAppointment() {
+  const [open,setOpen] = useState(false);
+  const [displayMsg,setDisplayMsg] = useState({});
   const [isAvailable, setIsAvailable] = useState(false);
   const navigate = useNavigate();
   const [date, setDate] = useState();
@@ -33,7 +36,14 @@ function BookAppointment() {
   const { appointmentDetails, isLoading } = useSelector(
     (state) => state.doctorsAppointmentDetails
   );
-
+ function checkTime(time){
+      if(time === 0){
+        return 24;
+      }
+      else{
+        return time;
+      }
+ }
   const getAppointmentSlotFilter = (response) => {
     const dataArray = Object.keys(response.data).map((key) => {
       return {
@@ -145,7 +155,7 @@ function BookAppointment() {
           doctorInfo: doctor,
           userInfo: user,
           date: moment(date).format('DD-MM-YYYY'),
-          time: time ? convertDecimalToInteger(time.replace(":", ".") * 2) :""
+          time: checkTime(time) ? convertDecimalToInteger(time.replace(":", ".") * 2) :""
         },
         {
           headers: {
@@ -156,13 +166,8 @@ function BookAppointment() {
 
       dispatch(hideLoading());
       if (response.data.success) {
-        toast.success(response.data.message);
-        dispatch(
-          getDoctorsAppointmentDetailsFetch({
-            doctorId: params.doctorId,
-          })
-        );
-        // navigate("/appointments");
+        setDisplayMsg(response.data);
+        setOpen(true);
       }
     } catch (error) {
       toast.error("Error booking appointment");
@@ -174,19 +179,36 @@ function BookAppointment() {
     getDoctorData();
   }, []);
 
+
+  function handleCloseDialog(){
+    setOpen(false);
+    navigate("/appointments");
+  }
   return (
     <>
-      {console.log("appointmentDetails", appointmentDetails,"date",date)}
+      <CustomDialog
+        isOpen={open}
+        title={displayMsg?.success ? displayMsg?.message : "Appointment Confirmation"}
+        handleConfirmation={() => {
+          console.log("ok...");
+        }}
+        handleClose={handleCloseDialog}
+        subtitle={displayMsg?.success? displayMsg?.emailMsg : ""}
+        isConfirmationModal={true}
+        confirmationLabel="Confirm"
+      />
+
       {doctor && (
         <div>
           <h1 className="page-title">
             {doctor.firstName} {doctor.lastName} - {doctor.specialization}
+            </h1>
             <Link to="/searchdoctor">
-              <CustomButton primary={false} sx={{ ml: "62rem" }}>
+              <CustomButton primary={false} sx={{ ml: "75rem" }}>
                 Back
               </CustomButton>
             </Link>
-          </h1>
+          
           <hr />
           <Grid container spacing={4}>
             <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
@@ -217,7 +239,7 @@ function BookAppointment() {
                 }
               />
             </Grid>
-            <Grid sx={{ mt: "2.3%" }}>
+            <Grid sx={{ mt: "2.7%" }}>
               <TimePicker
                 format="HH:mm"
                 className="mt-3"

@@ -19,6 +19,7 @@ import variables from "../App.scss";
 import { CustomLabel } from "../Library/Label/Label";
 import { CustomButton } from "../Library/Button/Button";
 import "../components/DoctorsTable.scss";
+import { Link } from "react-router-dom";
 
 function Appointments() {
   const [appointments, setAppointments] = useState([]);
@@ -42,7 +43,7 @@ function Appointments() {
       dispatch(hideLoading());
     }
   };
- 
+
   const appointmentColumns = [
     {
       id: 1,
@@ -57,7 +58,7 @@ function Appointments() {
   useEffect(() => {
     getAppointmentsData();
   }, []);
- 
+
   const cancelAppointment = (item, ind) => {
     console.log("Booking Appointment...", item, ind);
   };
@@ -96,7 +97,17 @@ function Appointments() {
   return (
     <div id="searchdoctorId">
       {/* <Loader isOpen={isLoading} /> */}
-      <h1 className="page-title">Appointments</h1>
+      <div>
+        <h1 className="page-title">Appointments</h1>
+      </div>
+      <div style={{mt:"-2%"}}>
+        <Link to="/">
+          <CustomButton primary={false} sx={{ml:'90%'}}>
+            Back
+          </CustomButton>
+        </Link>
+      </div>
+
       <Grid container spacing={4} sx={{ padding: "7px" }}>
         <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
           <CustomTableContainer $mxheight={400}>

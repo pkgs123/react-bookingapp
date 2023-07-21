@@ -47,8 +47,8 @@ export const CustomDialog = ({
                 <Cancel />
               </div>
               {title && (
-                <div>
-                  <DialogTitle id="dialog-title">
+                <div style={{color:"white"}}>
+                  <DialogTitle id="dialog-title" sx={{color:"white"}}>
                     {title}
                   </DialogTitle>
                 </div>
@@ -75,14 +75,14 @@ export const CustomDialog = ({
               {closeLabel}
             </CustomButton>
 
-            <CustomButton
+            {/* <CustomButton
               onClick={handleAccept}
               color="primary"
               data-testid="accept-id"
               size="small"
             >
               {confirmationLabel}
-            </CustomButton>
+            </CustomButton> */}
           </DialogActions>
         )}
       </Dialog>
@@ -104,6 +104,6 @@ CustomDialog.propTypes = {
 
 CustomDialog.defaultProps = {
   confirmationLabel: "Agree",
-  closeLabel: "Close",
+  closeLabel: "OK",
   maxWidth: "md"
 };

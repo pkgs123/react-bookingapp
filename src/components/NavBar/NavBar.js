@@ -9,6 +9,7 @@ import HistoryIcon from "@mui/icons-material/History";
 import UpcomingIcon from "@mui/icons-material/Upcoming";
 import { useNavigate } from "react-router-dom";
 import { Navbar } from "./NavbarBase";
+import {  Logout } from "@mui/icons-material";
 function NavBar() {
   const navigate = useNavigate();
 
@@ -62,7 +63,7 @@ function NavBar() {
     { name: "Notifications", icon: <NotificationsIcon /> },
     {
       name: localStorage.getItem("token") ? "Logout" : "Login",
-      icon: <DraftsIcon />,
+      icon: <Logout />,
     },
   ];
 
