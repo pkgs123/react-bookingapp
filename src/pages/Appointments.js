@@ -20,9 +20,12 @@ import { CustomLabel } from "../Library/Label/Label";
 import { CustomButton } from "../Library/Button/Button";
 import "../components/DoctorsTable.scss";
 import { Link } from "react-router-dom";
+import { CustomDialog } from "../Library/Modal/Modal";
 
 function Appointments() {
   const [appointments, setAppointments] = useState([]);
+  const [open,setOpen] = useState(false);
+  const [selectedItem,setSelectedItem] = useState();
   const dispatch = useDispatch();
   const getAppointmentsData = async () => {
     try {
@@ -60,7 +63,8 @@ function Appointments() {
   }, []);
 
   const cancelAppointment = (item, ind) => {
-    console.log("Booking Appointment...", item, ind);
+    setOpen(true);
+    setSelectedItem(item);
   };
 
   function checkPastDate(appointmentDate) {
@@ -94,6 +98,37 @@ function Appointments() {
     }
   }
 
+  async function handleCloseDialog(){
+    setOpen(false);
+    try {
+      dispatch(showLoading());
+      const response = await axios.post(
+        "/api/user/change-appointment-status-by-id",
+        {
+          appointmentId:selectedItem?._id,
+          status:"C"
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+
+      dispatch(hideLoading());
+      if (response.data.success) {
+        toast.success(response.data.message);
+        getAppointmentsData();
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      toast.error("Error booking appointment");
+      dispatch(hideLoading());
+    }
+    
+    // navigate("/appointments");
+  }
   return (
     <div id="searchdoctorId">
       {/* <Loader isOpen={isLoading} /> */}
@@ -110,7 +145,7 @@ function Appointments() {
 
       <Grid container spacing={4} sx={{ padding: "7px" }}>
         <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-          <CustomTableContainer $mxheight={400}>
+          <CustomTableContainer $mxheight={475}>
             <CustomTable stickyHeader>
               <CustomTableHead $bgcolor={variables.color_header_bg}>
                 <CustomTableRow>
@@ -162,11 +197,16 @@ function Appointments() {
                       </CustomTableCell>
 
                       <CustomTableCell style={{ textAlign: "center" }}>
-                        {checkPastDate(item?.date) && (
-                          <CustomButton onClick={cancelAppointment(item, ind)}>
-                            Cancel Appointment
+                        {(checkPastDate(item?.date) && item?.bookingStatus === "A" ) &&(
+                          <CustomButton onClick={()=>cancelAppointment(item, ind)}>
+                              Cancel Appointment 
                           </CustomButton>
                         )}
+                        {
+                          item?.bookingStatus === "C" && (
+                            <CustomLabel label="Appointment Cancelled" className="label-color"/>
+                          )
+                        }
                       </CustomTableCell>
                     </CustomTableRow>
                   ))}
@@ -189,6 +229,18 @@ function Appointments() {
           </CustomTableContainer>
         </Grid>
       </Grid>
+
+      <CustomDialog
+      isOpen={open}
+      title={"Cancel Confirmation?"}
+      handleConfirmation={() => {
+        console.log("ok...");
+      }}
+      handleClose={handleCloseDialog}
+      subtitle={"Would you like to cancel your appointment?"}
+      isConfirmationModal={true}
+      confirmationLabel="Confirm"
+    />
     </div>
   );
 }

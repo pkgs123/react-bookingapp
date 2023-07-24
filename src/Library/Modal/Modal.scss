@@ -6,7 +6,9 @@
   .Modal-Header-Container {
     background-color: $color_modal_header_bg;
   }
-
+  .Modal-Header-cancel-Container{
+    background-color: grey;
+  }
   .Modal-Header {
     height: auto;
     display: flex;

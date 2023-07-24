@@ -38,7 +38,7 @@ export const CustomDialog = ({
         maxWidth={maxWidth}
       >
         <div className="closeWrapper">
-          <div className="Modal-Header-Container">
+          <div  className = {`${title === "Cancel Confirmation?" ? 'Modal-Header-cancel-Container' : 'Modal-Header-Container'}`}>
             <div className="Modal-Header">
               <div
                 className="modalCloseIcon"

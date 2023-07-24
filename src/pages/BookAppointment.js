@@ -154,6 +154,7 @@ function BookAppointment() {
           userId: user._id,
           doctorInfo: doctor,
           userInfo: user,
+          bookingStatus:"A",
           date: moment(date).format('DD-MM-YYYY'),
           time: checkTime(time) ? convertDecimalToInteger(time.replace(":", ".") * 2) :""
         },

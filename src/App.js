@@ -16,15 +16,14 @@ import Appointments from "./pages/Appointments";
 // import DoctorAppointments from "./pages/Doctor/DoctorAppointments";
 import NavBar from "./components/NavBar/NavBar";
 import SearchDoctor from "./pages/SearchDoctor";
+import { Loader } from "./Library/Loader/Loader";
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
   return (
     <HashRouter>
       {loading && (
-        <div className="spinner-parent">
-          <div class="spinner-border" role="status"></div>
-        </div>
+        <Loader isOpen={loading} />
       )}
       <Toaster position="top-center" reverseOrder={false} />
       <NavBar/>
