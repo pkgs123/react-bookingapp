@@ -11,7 +11,7 @@ function Home() {
   const getData = async () => {
     try {
       dispatch(showLoading())
-      const response = await axios.get(`${process.env.REACT_APP_API_BASEURL}/api/user/get-all-approved-doctors`, {
+      const response = await axios.get(`//atulvm.eastus.cloudapp.azure.com:8000/api/user/get-all-approved-doctors`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },

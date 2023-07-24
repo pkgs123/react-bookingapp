@@ -56,7 +56,6 @@ function BookAppointment() {
         }),
       };
     });
-    console.log("array", dataArray);
     let todaysAppointmentDetails;
     let tomorrowsAppointmentDetails;
     let dayAfterTomorrowsDetails;
@@ -75,21 +74,12 @@ function BookAppointment() {
     setTodaysSlotInfo(todaysAppointmentDetails);
     setTomorrowsSlotInfo(tomorrowsAppointmentDetails);
     setDayAfterTomorrowsSlotInfo(dayAfterTomorrowsDetails);
-
-    console.log(
-      "todays--resp",
-      todaysAppointmentDetails,
-      "tomorrows--resp",
-      tomorrowsAppointmentDetails,
-      "day-afer-tomor",
-      dayAfterTomorrowsDetails
-    );
   };
   const getDoctorData = async () => {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        `${process.env.REACT_APP_API_BASEURL}/api/doctor/get-doctor-info-by-id`,
+        `//atulvm.eastus.cloudapp.azure.com:8000/api/doctor/get-doctor-info-by-id`,
         {
           doctorId: params.doctorId,
         },
@@ -111,7 +101,6 @@ function BookAppointment() {
         );
       }
     } catch (error) {
-      console.log(error);
       dispatch(hideLoading());
     }
   };
@@ -119,7 +108,7 @@ function BookAppointment() {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        `${process.env.REACT_APP_API_BASEURL}/api/user/check-booking-avilability`,
+        `//atulvm.eastus.cloudapp.azure.com:8000/api/user/check-booking-avilability`,
         {
           doctorId: params.doctorId,
           date: moment(date).format('DD-MM-YYYY'),
@@ -148,7 +137,7 @@ function BookAppointment() {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        `${process.env.REACT_APP_API_BASEURL}/api/user/book-appointment`,
+        `//atulvm.eastus.cloudapp.azure.com:8000/api/user/book-appointment`,
         {
           doctorId: params.doctorId,
           userId: user._id,
@@ -191,7 +180,6 @@ function BookAppointment() {
         isOpen={open}
         title={displayMsg?.success ? displayMsg?.message : "Appointment Confirmation"}
         handleConfirmation={() => {
-          console.log("ok...");
         }}
         handleClose={handleCloseDialog}
         subtitle={displayMsg?.success? displayMsg?.emailMsg : ""}
@@ -205,7 +193,7 @@ function BookAppointment() {
             {doctor.firstName} {doctor.lastName} - {doctor.specialization}
             </h1>
             <Link to="/searchdoctor">
-              <CustomButton primary={false} sx={{ ml: "75rem" }}>
+              <CustomButton primary={false} sx={{ ml: "89%" }}>
                 Back
               </CustomButton>
             </Link>

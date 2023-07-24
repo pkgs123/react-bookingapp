@@ -14,7 +14,6 @@ function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const getLoginResponse = (loginData)=>{
-    console.log("loginData",loginData)
     if (loginData.success) {
       toast.success(loginData.message);
       localStorage.setItem("token", loginData.data);

@@ -58,7 +58,6 @@ function SearchBySpecialization({ selectedOption, selectedLocation }) {
   };
 
   const handleGlobalSearchChange = (event, value) => {
-    console.log("selected-value", value);
      setSelectedValue(value);
     dispatch(getSelectedValue([value]))
   };

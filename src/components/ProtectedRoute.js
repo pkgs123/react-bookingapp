@@ -14,7 +14,7 @@ function ProtectedRoute(props) {
     try {
       dispatch(showLoading())
       const response = await axios.post(
-        `${process.env.REACT_APP_API_BASEURL}/api/user/get-user-info-by-id`,
+        `//atulvm.eastus.cloudapp.azure.com:8000/api/user/get-user-info-by-id`,
         { token: localStorage.getItem("token") },
         {
           headers: {

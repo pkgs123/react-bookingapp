@@ -31,7 +31,7 @@ function Appointments() {
     try {
       dispatch(showLoading());
       const resposne = await axios.get(
-        `${process.env.REACT_APP_API_BASEURL}/api/user/get-appointments-by-user-id`,
+        `//atulvm.eastus.cloudapp.azure.com:8000/api/user/get-appointments-by-user-id`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -53,9 +53,10 @@ function Appointments() {
       colName: "Doctor",
     },
     { id: 2, colName: "Phone" },
-    { id: 3, colName: "Date" },
-    { id: 4, colName: "Time" },
-    { id: 5, colName: "Status/Action" },
+    { id: 3, colName: "Address" },
+    { id: 4, colName: "Date" },
+    { id: 5, colName: "Time" },
+    { id: 6, colName: "Status/Action" },
   ];
 
   useEffect(() => {
@@ -84,15 +85,6 @@ function Appointments() {
       moment(new Date(), "DD-MMM-YYYY"),
       "day"
     );
-    console.log(
-      "isPastDate",
-      isPastDate,
-      "isSameDate",
-      isSameDate,
-      "isFutureDate",
-      isFutureDate
-    );
-
     if (isSameDate || isFutureDate) {
       return true;
     }
@@ -103,7 +95,7 @@ function Appointments() {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "/api/user/change-appointment-status-by-id",
+        "//atulvm.eastus.cloudapp.azure.com:8000/api/user/change-appointment-status-by-id",
         {
           appointmentId:selectedItem?._id,
           status:"C"
@@ -181,6 +173,11 @@ function Appointments() {
                         style={{ textAlign: "center" }}
                       >
                         {item?.doctorInfo?.phoneNumber}
+                      </CustomTableCell>
+                      <CustomTableCell
+                        style={{ textAlign: "center" }}
+                      >
+                        {item?.doctorInfo?.address}
                       </CustomTableCell>
                       <CustomTableCell style={{ textAlign: "center" }}>
                         {moment(item?.date).format("DD-MMM-YYYY")}
